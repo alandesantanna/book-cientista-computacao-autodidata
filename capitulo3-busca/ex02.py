@@ -27,7 +27,7 @@ def busca_binaria(lista, palavra):
     return -1
 
 # Testando a busca binária
-palavra_procurada = "coração"
+palavra_procurada = "amor"
 indice = busca_binaria(palavras, palavra_procurada)
 
 if indice != -1:
