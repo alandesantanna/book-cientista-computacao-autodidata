@@ -1,15 +1,36 @@
-from bisect import bisect_left
-
-lista = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-    31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
-    51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-    61, 62, 63, 64, 65, 66, 67, 68, 69, 70,
-    71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
-    81, 82, 83, 84, 85, 86, 87, 88, 89, 90,
-    91, 92, 93, 94, 95, 96, 97, 98, 99, 100
+palavras = [
+    "abacate", "abacaxi", "abelha", "abóbora", "abrigo", "absurdo", "academia", "acidente", "acompanhar", "acorde",
+    "admirar", "adolescente", "adulto", "aeroporto", "afeto", "água", "alegria", "alface", "algodão", "alimento",
+    "almofada", "amarelo", "amigo", "amor", "análise", "anel", "animal", "aniversário", "anjo", "antena",
+    "antigo", "aparelho", "apetite", "aprender", "apresentar", "árvore", "asa", "atitude", "atleta", "atual",
+    "aula", "aumento", "aventura", "avião", "avó", "azul", "bala", "banana", "bandeira", "barco",
+    "barriga", "bateria", "beleza", "belo", "bicicleta", "biscoito", "blusa", "bola", "bolsa", "bombeiro",
+    "borboleta", "branco", "brilho", "brincadeira", "brinquedo", "broa", "cabeça", "caderno", "café", "caixa",
+    "calendário", "calor", "cama", "caminho", "camisa", "campo", "caneta", "canguru", "cantar", "capricho",
+    "carinho", "carro", "carta", "casa", "casaco", "cavalo", "cebola", "celular", "cenoura", "cereja",
+    "certeza", "chapéu", "chuva", "cidadão", "cidade", "cinto", "circo", "clima", "coração", "coragem"
 ]
-print(bisect_left(lista, 90))
+
+def busca_binaria(lista, palavra):
+    esquerda = 0
+    direita = len(lista) - 1
+
+    while esquerda <= direita:
+        meio = (esquerda + direita) // 2
+        if lista[meio] == palavra:
+            return meio
+        elif lista[meio] < palavra:
+            esquerda = meio + 1
+        else:
+            direita = meio - 1
+
+    return -1
+
+# Testando a busca binária
+palavra_procurada = "coração"
+indice = busca_binaria(palavras, palavra_procurada)
+
+if indice != -1:
+    print(f"A palavra '{palavra_procurada}' foi encontrada no índice {indice}.")
+else:
+    print(f"A palavra '{palavra_procurada}' não foi encontrada na lista.")
